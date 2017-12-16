@@ -1,0 +1,19 @@
+{
+  "name": "next-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "lint": "eslint **/*.js"
+  },
+  "dependencies": {
+    "next": "^4.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
