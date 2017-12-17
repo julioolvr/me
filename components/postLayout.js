@@ -71,6 +71,11 @@ class Post extends React.Component {
 
           .post :global(code) {
             font-family: 'Roboto Mono', monospace;
+            color: #a7fe92;
+          }
+
+          .post :global(a code) {
+            color: #af3eff;
           }
 
           .post :global(b) {
