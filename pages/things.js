@@ -34,7 +34,7 @@ const Things = () => {
 
       <div className="thing">
         <div className="description">
-          <h1>
+          <h1 className="long-name">
             <a href="http://blaquenkot.github.io/game-off-2013/">
               CH₃CH₂CH₂CH₂CH₃anges
             </a>
@@ -52,8 +52,15 @@ const Things = () => {
       </div>
 
       <style jsx>{`
-        .description {
-          padding: 0 2em;
+        .long-name {
+          // Because this one annoyingly overflows otherwise
+          word-break: break-all;
+        }
+
+        @media (min-width: 45em) {
+          .description {
+            padding: 0 2em;
+          }
         }
       `}</style>
     </Layout>

@@ -10,7 +10,9 @@ const Myself = () => {
       </p>
 
       <p className="links">
-        <a>me</a>
+        <Link href="/me">
+          <a>me</a>
+        </Link>
         <span className="separator">|</span>
         <a>blog</a>
         <span className="separator">|</span>
@@ -21,7 +23,8 @@ const Myself = () => {
         <Link href="/talks">
           <a>talks</a>
         </Link>
-        <span className="separator">|</span>
+        <span className="hide-on-small separator">|</span>
+        <br className="show-on-small" />
         <a href="https://github.com/julioolvr">github</a>
         <span className="separator">|</span>
         <a href="https://twitter.com/julioolvr">twitter</a>
@@ -47,6 +50,20 @@ const Myself = () => {
 
         .separator {
           margin: 0 0.2em;
+        }
+
+        .show-on-small {
+          display: none;
+        }
+
+        @media (max-width: 440px) {
+          .show-on-small {
+            display: initial;
+          }
+
+          .hide-on-small {
+            display: none;
+          }
         }
       `}</style>
     </div>

@@ -1,23 +1,18 @@
+import Head from 'next/head';
+
 import KonamiCode from './konami';
 import EasterEgg from './easterEgg';
 
-const Base = ({ children, ...props }) => {
+const Base = ({ children }) => {
   return (
-    <div className="root" {...props}>
+    <div>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       {children}
       <KonamiCode>
         <EasterEgg />
       </KonamiCode>
-
-      <style jsx>{`
-        .root {
-          height: 100vh;
-          width: 100vw;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      `}</style>
 
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300');
