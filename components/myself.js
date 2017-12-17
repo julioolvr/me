@@ -3,7 +3,11 @@ import Link from 'next/link';
 const Myself = () => {
   return (
     <div className="myself">
-      <p className="name">Julio Olivera</p>
+      <p className="name">
+        <Link href="/">
+          <a>Julio Olivera</a>
+        </Link>
+      </p>
 
       <p className="links">
         <a>me</a>
@@ -31,6 +35,10 @@ const Myself = () => {
         .name {
           text-transform: uppercase;
           margin-bottom: 0;
+        }
+
+        .name a {
+          color: #e3e3e3;
         }
 
         .links {
