@@ -21,6 +21,13 @@ const Base = ({ children }) => {
           box-sizing: border-box;
         }
 
+        ::selection {
+          background-color: #16146c;
+        }
+        ::-moz-selection {
+          background-color: #16146c;
+        }
+
         html,
         body {
           margin: 0;
