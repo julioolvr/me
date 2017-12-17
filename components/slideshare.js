@@ -3,11 +3,11 @@ const Slideshare = ({ slideKey }) => {
     <div className="wrapper">
       <iframe
         src={`//www.slideshare.net/slideshow/embed_code/key/${slideKey}`}
-        frameborder="0"
-        marginwidth="0"
-        marginheight="0"
+        frameBorder="0"
+        marginWidth="0"
+        marginHeight="0"
         scrolling="no"
-        allowfullscreen
+        allowFullscreen
       />
 
       <style jsx>{`

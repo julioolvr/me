@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import KonamiCode from './konami';
-import EasterEgg from './easterEgg';
+import KonamiCode from '~/components/konami';
+import EasterEgg from '~/components/easterEgg';
 
 const Base = ({ children }) => {
   return (
@@ -15,7 +15,7 @@ const Base = ({ children }) => {
       </KonamiCode>
 
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300');
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,700|Roboto:300,700');
 
         * {
           box-sizing: border-box;

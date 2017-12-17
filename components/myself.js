@@ -14,7 +14,9 @@ const Myself = () => {
           <a>me</a>
         </Link>
         <span className="separator">|</span>
-        <a>blog</a>
+        <Link href="/b/2017/05/27/thoughts-about-vue-js">
+          <a>blog</a>
+        </Link>
         <span className="separator">|</span>
         <Link href="/things">
           <a>things</a>

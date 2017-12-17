@@ -1,6 +1,6 @@
-import Layout from '../components/layout';
-import YoutubeVideo from '../components/youtubeVideo';
-import Slideshare from '../components/slideshare';
+import Layout from '~/components/layout';
+import YoutubeVideo from '~/components/youtubeVideo';
+import Slideshare from '~/components/slideshare';
 
 const Talks = () => {
   return (

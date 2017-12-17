@@ -1,5 +1,5 @@
-import Base from './base';
-import Myself from './myself';
+import Base from '~/components/base';
+import Myself from '~/components/myself';
 
 const Layout = ({ children }) => {
   return (
