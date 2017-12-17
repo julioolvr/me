@@ -14,7 +14,9 @@ const Myself = () => {
           <a>things</a>
         </Link>
         <span className="separator">|</span>
-        <a>talks</a>
+        <Link href="/talks">
+          <a>talks</a>
+        </Link>
         <span className="separator">|</span>
         <a href="https://github.com/julioolvr">github</a>
         <span className="separator">|</span>
