@@ -3,10 +3,10 @@ const YoutubeVideo = ({ id }) => {
     <div className="wrapper">
       <iframe
         src={`https://www.youtube.com/embed/${id}?rel=0&amp;showinfo=0`}
-        frameborder="0"
+        frameBorder="0"
         gesture="media"
         allow="encrypted-media"
-        allowfullscreen
+        allowFullscreen
       />
 
       <style jsx>{`
