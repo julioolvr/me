@@ -35,6 +35,7 @@ const Layout = ({ children }) => {
         .container {
           display: flex;
           justify-content: center;
+          align-items: center;
           flex: 2;
         }
 

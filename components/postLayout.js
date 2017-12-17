@@ -40,7 +40,9 @@ class Post extends React.Component {
           <title>{title}</title>
         </Head>
 
-        <div className="date">{date}</div>
+        <div className="date">
+          <time>{date}</time>
+        </div>
         <h1 className={langs.length > 1 && 'has-multiple-langs'}>{title}</h1>
         {langs.length > 1 && <LanguageSelector langs={langs} lang={lang} />}
 
