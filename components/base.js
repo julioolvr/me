@@ -1,7 +1,13 @@
+import KonamiCode from './konami';
+import EasterEgg from './easterEgg';
+
 const Base = ({ children, ...props }) => {
   return (
     <div className="root" {...props}>
       {children}
+      <KonamiCode>
+        <EasterEgg />
+      </KonamiCode>
 
       <style jsx>{`
         .root {
