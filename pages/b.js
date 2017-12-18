@@ -64,7 +64,7 @@ const PostsList = () => {
           <li>
             <time>{post.date}</time>
             <Link href={post.href}>
-              <a>{post.title}</a>
+              <a className="post">{post.title}</a>
             </Link>
           </li>
         ))}
@@ -80,7 +80,11 @@ const PostsList = () => {
 
         time {
           font-size: 0.8em;
-          margin-right: 1em;
+          flex: 1;
+        }
+
+        .post {
+          flex: 4;
         }
       `}</style>
     </Layout>

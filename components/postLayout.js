@@ -62,6 +62,10 @@ class Post extends React.Component {
             margin-bottom: 0;
           }
 
+          .post {
+            margin-bottom: 3em;
+          }
+
           .post :global(p) {
             margin: 2em 0;
             letter-spacing: 0.05em;
