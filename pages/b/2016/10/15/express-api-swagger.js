@@ -268,7 +268,7 @@ router.put('/', restrictToRoles('owner'), createUser);
 
             <p>
               <img
-                src="/2016-10-15-express-api-swagger/ui-example.png"
+                src="/static/images/blog/swagger-example.png"
                 alt="Swagger UI"
                 title=""
               />
