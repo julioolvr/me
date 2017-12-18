@@ -78,6 +78,11 @@ class Post extends React.Component {
             color: #a7fe92;
           }
 
+          .post :global(pre) {
+            max-width: 100%;
+            overflow-x: scroll;
+          }
+
           .post :global(a code) {
             color: #af3eff;
           }

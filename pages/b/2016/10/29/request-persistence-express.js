@@ -56,20 +56,20 @@ const Post = () => {
             </p>
 
             <pre>{`
-        const { createNamespace } = require('continuation-local-storage')
+const { createNamespace } = require('continuation-local-storage')
 
-        const session = createNamespace('request')
+const session = createNamespace('request')
 
-        // Assuming we have our express app in \`app\`
-        app.use((req, res, next) => {
-          session.run(() => next())
-        })
+// Assuming we have our express app in \`app\`
+app.use((req, res, next) => {
+  session.run(() => next())
+})
 
-        // And once we have authenticated the user
-        app.use((req, res, next) => {
-          session.set('currentUser', req.user)
-          next()
-        })
+// And once we have authenticated the user
+app.use((req, res, next) => {
+  session.set('currentUser', req.user)
+  next()
+})
         `}</pre>
 
             <p>
@@ -113,11 +113,11 @@ const Post = () => {
             </p>
 
             <pre>{`
-        const { getNamespace } = require('continuation-local-storage')
+const { getNamespace } = require('continuation-local-storage')
 
-        function getCurrentUser() {
-          return getNamespace('request').get('currentUser')
-        }
+function getCurrentUser() {
+  return getNamespace('request').get('currentUser')
+}
         `}</pre>
 
             <p>
