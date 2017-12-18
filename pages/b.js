@@ -71,6 +71,10 @@ const PostsList = () => {
       </ol>
 
       <style jsx>{`
+        ol {
+          padding-left: 0;
+        }
+
         li {
           list-style: none;
           line-height: 1.5em;
@@ -85,6 +89,12 @@ const PostsList = () => {
 
         .post {
           flex: 4;
+        }
+
+        @media (max-width: 600px) {
+          li {
+            flex-direction: column;
+          }
         }
       `}</style>
     </Layout>
