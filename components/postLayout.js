@@ -90,6 +90,10 @@ class Post extends React.Component {
           .post :global(b) {
             color: white;
           }
+
+          .post :global(img) {
+            width: 100%;
+          }
         `}</style>
       </Layout>
     );
