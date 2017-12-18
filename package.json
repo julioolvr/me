@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "lint": "eslint **/*.js"
+    "lint": "eslint **/*.js",
+    "build": "next build && next export"
   },
   "dependencies": {
     "babel-plugin-root-import": "^5.1.0",
