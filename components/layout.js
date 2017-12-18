@@ -1,7 +1,7 @@
 import Base from '~/components/base';
 import Myself from '~/components/myself';
 
-const Layout = ({ children }) => {
+const Layout = ({ centered = false, children }) => {
   return (
     <Base>
       <div className="root">
@@ -13,6 +13,12 @@ const Layout = ({ children }) => {
           <div className="content">{children}</div>
         </div>
       </div>
+
+      <style jsx>{`
+        .root {
+          ${centered ? 'height: 100vh;' : ''};
+        }
+      `}</style>
 
       <style jsx>{`
         .root {
@@ -40,6 +46,7 @@ const Layout = ({ children }) => {
 
         .content {
           width: 100%;
+          max-height: 100%;
           padding: 0 2.5em;
         }
 

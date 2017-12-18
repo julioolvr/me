@@ -58,10 +58,10 @@ const posts = [
 
 const PostsList = () => {
   return (
-    <Layout>
+    <Layout centered>
       <ol>
         {posts.map(post => (
-          <li>
+          <li key={post.href}>
             <time>{post.date}</time>
             <Link href={post.href}>
               <a className="post">{post.title}</a>

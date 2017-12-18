@@ -15,7 +15,7 @@ class Me extends React.Component {
     const { lang } = this.state;
 
     return (
-      <Layout>
+      <Layout centered>
         <div className="container">
           <div>
             <h1>
