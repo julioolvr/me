@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -18,10 +21,10 @@ const Post = () => {
 
             <p>Consider the following code:</p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 'use strict';
 var something = function bug(bug) {};
-`}</pre>
+  `}</Code>
 
             <p>
               The fact that the function is called <code>bug</code>, and the
@@ -30,10 +33,10 @@ var something = function bug(bug) {};
               problems with it:
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 'use strict';
 function bug(bug) {}
-`}</pre>
+  `}</Code>
 
             <p>
               No syntax error there! But when there <em>is</em> a syntax error,

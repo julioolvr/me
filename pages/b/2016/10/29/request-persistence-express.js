@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -55,7 +58,7 @@ const Post = () => {
               </strong>.
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 const { createNamespace } = require('continuation-local-storage')
 
 const session = createNamespace('request')
@@ -70,7 +73,7 @@ app.use((req, res, next) => {
   session.set('currentUser', req.user)
   next()
 })
-        `}</pre>
+  `}</Code>
 
             <p>
               See that I called the namespace <code>request</code>.{' '}
@@ -112,13 +115,13 @@ app.use((req, res, next) => {
               namespace and fetch the value from it:
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 const { getNamespace } = require('continuation-local-storage')
 
 function getCurrentUser() {
   return getNamespace('request').get('currentUser')
 }
-        `}</pre>
+  `}</Code>
 
             <p>
               As long as <code>getCurrentUser</code> can be traced all the way

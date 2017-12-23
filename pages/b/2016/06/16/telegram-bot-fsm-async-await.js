@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -157,7 +160,7 @@ const Post = () => {
             handles replies very well. So let's install it:
           </p>
 
-          <pre>npm i node-telegram-bot-api --save</pre>
+          <Code language="bash" style={vs2015}>npm i node-telegram-bot-api --save</Code>
 
           <p>
             Now let's update our <code>Bot</code> class - it will use an
@@ -165,7 +168,7 @@ const Post = () => {
             as a client to interact with Telegram's API:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 import TelegramBotClient from 'node-telegram-bot-api'
 
 export default class Bot {
@@ -179,7 +182,7 @@ export default class Bot {
     })
   }
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Note that we need to pass two parameters to the client - the{' '}
@@ -212,7 +215,7 @@ export default class Bot {
             we'll put the token in a <code>.env</code> file, like
           </p>
 
-          <pre>BOT_TOKEN=123456789:abcdefghijklmnoprqstuvwxyz</pre>
+          <Code style={vs2015}>BOT_TOKEN=123456789:abcdefghijklmnoprqstuvwxyz</Code>
 
           <p>
             Since we're already calling <code>dotenv.load()</code> in our{' '}
@@ -222,9 +225,10 @@ export default class Bot {
             pass that token to our <code>Bot</code> instance:
           </p>
 
-          <pre>
-            -var bot = new Bot() +var bot = new Bot(process.env.BOT_TOKEN)
-          </pre>
+          <Code language="diff" style={vs2015}>{`
+-var bot = new Bot()
++var bot = new Bot(process.env.BOT_TOKEN)
+          `}</Code>
 
           <p>
             So far so good, our bot logs each message it receives. Let's take
@@ -234,12 +238,12 @@ export default class Bot {
             which chat (the one we got it from):
           </p>
 
-          <pre>{`
+          <Code language="diff" style={vs2015}>{`
 -    console.log('Got a message', message)
 +    this.client.on('message', message => {
 +      this.client.sendMessage(message.chat.id, message.text)
 +    })
-`}</pre>
+  `}</Code>
 
           <p>
             And that's it! At this point we have a bot that echoes whatever we
@@ -278,11 +282,11 @@ export default class Bot {
             sending the echo will now look like this:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 this.client.sendMessage(message.chat.id,
                         \`echo: \${text}\`,
                         { reply_markup: JSON.stringify({ force_reply: true }) })
-`}</pre>
+  `}</Code>
 
           <p>
             Note that we have to pass the options as a string, so we'll use{' '}
@@ -299,12 +303,12 @@ this.client.sendMessage(message.chat.id,
             put those two together to handle our user's first reply:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 this.client.sendMessage(message.chat.id,
                         \`echo: \${text}\`,
                         { reply_markup: JSON.stringify({ force_reply: true }) })
     .then(reply => console.log(reply))
-`}</pre>
+  `}</Code>
 
           <p>
             Nice. So what do we actually want to do with the reply? Well, if{' '}
@@ -314,7 +318,7 @@ this.client.sendMessage(message.chat.id,
             then:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 respondTo(message) {
   if (message.text === 'stop') {
     this.client.sendMessage(message.chat.id, 'Stopping')
@@ -337,7 +341,7 @@ respondToMessage(message) {
       })
     })
 }
-`}</pre>
+  `}</Code>
 
           <p>
             That should do the trick, right? Well, yes. But the code is (maybe
@@ -346,7 +350,7 @@ respondToMessage(message) {
             So what if the code could look more like this:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 respondTo(message) {
   let text = message.text
 
@@ -360,7 +364,7 @@ respondTo(message) {
 
   this.client.sendMessage(message.chat.id, 'Stopping')
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Hint: it can, and it will. That's where <code>async</code> and{' '}
@@ -400,7 +404,7 @@ respondTo(message) {
             following two snippets are equivalent:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 function syncFunction() {
   return someAsyncOperation()
     .then(result => result + 1)
@@ -415,7 +419,7 @@ async function asyncFunction() {
     console.error(err)
   }
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Going back to our code, the first step we need to take is to
@@ -425,10 +429,10 @@ async function asyncFunction() {
             along with <code>babel-polyfill</code>:
           </p>
 
-          <pre>
+          <Code language="bash" style={vs2015}>
             npm i babel-plugin-transform-async-to-generator babel-polyfill
             --save
-          </pre>
+          </Code>
 
           <p>
             Once that's done, we need to add{' '}
@@ -438,7 +442,7 @@ async function asyncFunction() {
             <code>.babelrc</code> file:
           </p>
 
-          <pre>{`
+          <Code language="json" style={vs2015}>{`
 {
   "presets": [
     "es2015"
@@ -447,7 +451,7 @@ async function asyncFunction() {
     "transform-async-to-generator"
   ]
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Now we can go and use async functions in the bot's code. We can use{' '}
@@ -460,11 +464,11 @@ async function asyncFunction() {
             that's not hard at all:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 let reply = await new Promise(resolve =>
   this.client.onReplyToMessage(sentMessage.chat.id, sentMessage.message_id, resolve)
 )
-`}</pre>
+  `}</Code>
 
           <p>
             I won't go into the details of promise creation since there are good
@@ -476,7 +480,7 @@ let reply = await new Promise(resolve =>
             like this:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 async respondTo(message) {
   let text = text = message.text
 
@@ -490,7 +494,7 @@ async respondTo(message) {
 
   this.client.sendMessage(message.chat.id, 'Stopping')
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Note that we marked <code>respondTo</code> as <code>async</code>,
@@ -514,7 +518,7 @@ async respondTo(message) {
             replies. Replies will already be caught by the loop.
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 start() {
   this.client.on('message', message => {
     if (!message.reply_to_message) {
@@ -522,7 +526,7 @@ start() {
     }
   })
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Having done this, it's time to model more complex behavior in the
@@ -605,7 +609,7 @@ start() {
             but it's likely there are plenty of others.
           </p>
 
-          <pre>npm i javascript-state-machine --save</pre>
+          <Code language="bash" style={vs2015}>npm i javascript-state-machine --save</Code>
 
           <p>
             Now let's write the FSM from above using the library. Since an
@@ -614,7 +618,7 @@ start() {
             function that creates the machine:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 import StateMachine from 'javascript-state-machine'
 
 function createFsm() {
@@ -632,7 +636,7 @@ function createFsm() {
     ]
   })
 }
-`}</pre>
+  `}</Code>
 
           <p>
             If you take a look at each event, they represent the transitions
@@ -644,7 +648,7 @@ function createFsm() {
             machine to check for a final state. Let's update the code then:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 async respondTo(message) {
   let fsm = createFsm()
   let lastReply = message
@@ -664,7 +668,7 @@ async respondTo(message) {
     lastReply = await new Promise(resolve => this.client.onReplyToMessage(sentMessage.chat.id, sentMessage.message_id, resolve))
   }
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Besides using <code>fsm.isFinished()</code> as our{' '}
@@ -706,7 +710,7 @@ async respondTo(message) {
             event" and so on:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 function eventFromStateAndMessageText(state, text) {
   switch (state) {
   case 'waitingstart':
@@ -728,7 +732,7 @@ function eventFromStateAndMessageText(state, text) {
     }
   }
 }
-`}</pre>
+  `}</Code>
 
           <h3>Defining the machine's behavior</h3>
 
@@ -750,7 +754,7 @@ function eventFromStateAndMessageText(state, text) {
             <code>while</code> loop we'll define all the callbacks:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 let name
 let lastMessage
 
@@ -774,7 +778,7 @@ fsm.ongottext = (event, from, to, message) => {
 }
 
 /.../
-`}</pre>
+  `}</Code>
 
           <p>
             I omitted some callbacks for brevity, but they're all pretty

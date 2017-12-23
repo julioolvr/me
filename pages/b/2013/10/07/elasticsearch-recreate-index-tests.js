@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -27,12 +30,12 @@ const Post = () => {
             <code>Book</code>) we had something along the lines of:
           </p>
 
-          <pre>{`
+          <Code language="ruby" style={vs2015}>{`
 before(:each) do
   Book.index.delete
   Book.create_elasticsearch_index
 end
-`}</pre>
+  `}</Code>
 
           <p>
             There was some more unrelated stuff in there (like deleting the
@@ -58,7 +61,7 @@ end
             following:
           </p>
 
-          <pre>{`
+          <Code language="bash" style={vs2015}>{`
 # 2013-10-04 09:25:05:839 [DELETE] ("test_index")
 #
 curl -X DELETE http://some-server:9200/test_index</p>
@@ -75,7 +78,7 @@ curl -X DELETE http://some-server:9200/test_index</p>
 curl -I "http://some-server:9200/test_index"
 
 # 2013-10-04 09:25:05:852 [200]
-`}</pre>
+  `}</Code>
 
           <p>
             So, right after the <code>DELETE</code> request, there's a{' '}
@@ -108,7 +111,7 @@ curl -I "http://some-server:9200/test_index"
 
           <p>So, in our Tire initializer, I added:</p>
 
-          <pre>{`
+          <Code language="ruby" style={vs2015}>{`
 Tire::Index.class_eval do
   def ensure_deleted
     5.times do
@@ -118,11 +121,11 @@ Tire::Index.class_eval do
     raise "The ElasticSearch index wasn't successfully deleted."
   end
 end
-          `}</pre>
+  `}</Code>
 
           <p>And then modified the hooks to look like:</p>
 
-          <pre>{`
+          <Code language="ruby" style={vs2015}>{`
 before(:each) do
   Book.index.ensure_deleted
   Book.create_elasticsearch_index
@@ -131,7 +134,7 @@ end
 after(:each) do
   Book.index.delete
 end
-            `}</pre>
+  `}</Code>
 
           <p>
             So basically, we check five times to see if the index was deleted. I

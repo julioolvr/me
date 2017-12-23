@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -131,19 +134,17 @@ const Post = () => {
             route in Express similar to the following:
           </p>
 
-          <p>
-            <pre>
-              const router = express.Router(); router.post('/token',
-              generateToken);
-            </pre>
-          </p>
+          <Code language="js" style={vs2015}>
+            const router = express.Router(); router.post('/token',
+            generateToken);
+          </Code>
 
           <p>
             The handler for the route will simply take the username and the
             password from the payload and pass it to the controller.
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 function generateToken(req, res, next) {
   const username = req.body.username;
   const password = req.body.password;</p>
@@ -152,14 +153,14 @@ function generateToken(req, res, next) {
     .then(token => res.status(200).send(token))
     .catch(next);
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Now let's dive into that <code>generateToken</code> method in the
             controller:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 const jwt = require('jsonwebtoken');
 
 /* ... */
@@ -194,7 +195,7 @@ function generateToken(username, password) {
     );
   });
 }
-`}</pre>
+  `}</Code>
 
           <p>
             Notice that you can send anything you want in the payload being
@@ -244,7 +245,7 @@ function generateToken(username, password) {
             middleware stack:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 const jwt = require('express-jwt');
 
 app.use(someMiddleware);
@@ -252,7 +253,7 @@ app.use(someOtherMiddleware);
 app.use(jwt({ secret: process.env.AUTHENTICATION_SECRET }).unless({
   path: ['/token']
 }));
-`}</pre>
+  `}</Code>
 
           <p>
             Make sure that you're using the same secret you used for signing the

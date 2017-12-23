@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -22,7 +25,7 @@ const Post = () => {
             llamada <code>doSomethingExpensive</code>.
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 function doSomethingExpensive() {
   console.log('expensive!');
   return 42;
@@ -42,7 +45,7 @@ objeto.prototype.metodo = function() {
 var obj = new objeto();
 obj.metodo(); // logs 'expensive!'
 obj.metodo(); // logs 'expensive!' again
-`}</pre>
+  `}</Code>
 
           <p>
             Bien, con cada llamada a <code>metodo</code> se ejecuta{' '}
@@ -54,7 +57,7 @@ obj.metodo(); // logs 'expensive!' again
             método:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 objeto.prototype.metodo = (function() {
   var expensive = doSomethingExpensive();
 
@@ -66,7 +69,7 @@ objeto.prototype.metodo = (function() {
 var obj = new objeto(); // logs 'expensive!'
 obj.metodo(); // no loguea nada
 obj.metodo(); // no loguea nada
-`}</pre>
+  `}</Code>
 
           <p>
             La{' '}
@@ -93,7 +96,7 @@ obj.metodo(); // no loguea nada
             se reemplace a sí mismo por una copia que use el valor ya calculado:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 objeto.prototype.metodo = function() {
   var expensive = doSomethingExpensive();
   this.metodo = function() {
@@ -105,7 +108,7 @@ objeto.prototype.metodo = function() {
 var obj = new objeto(); // no loguea nada
 obj.metodo(); // logs 'expensive!'
 obj.metodo(); // no loguea nada
-`}</pre>
+  `}</Code>
 
           <p>
             Esto combina lo mejor de los dos mundos, no ejecuta{' '}
@@ -117,14 +120,14 @@ obj.metodo(); // no loguea nada
             corta:
           </p>
 
-          <pre>{`
+          <Code language="js" style={vs2015}>{`
 objeto.prototype.metodo = function() {
   var expensive = doSomethingExpensive();
   return (this.metodo = function() {
     return doSomethingCheap(expensive);
   })();
 }
-`}</pre>
+  `}</Code>
         </div>
       )}
     </PostLayout>

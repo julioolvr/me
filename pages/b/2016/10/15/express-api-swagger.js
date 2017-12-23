@@ -1,3 +1,6 @@
+import Code from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/styles/hljs';
+
 import PostLayout from '~/components/postLayout';
 
 const Post = () => {
@@ -53,7 +56,7 @@ const Post = () => {
               Swagger specifics:
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 const swaggerJSDoc = require('swagger-jsdoc');
 
 const spec = swaggerJSDoc({
@@ -79,7 +82,7 @@ const spec = swaggerJSDoc({
     'lib/routes/*.js'
   ]
 });
-`}</pre>
+  `}</Code>
 
             <p>
               The generator function receives an options object with two
@@ -161,7 +164,7 @@ const spec = swaggerJSDoc({
               </strong>. Let's go with a fairly comprehensive example:
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 /**
   * @swagger
   * /users:
@@ -207,7 +210,7 @@ const spec = swaggerJSDoc({
   *         description: When the username is already in use
   */
 router.put('/', restrictToRoles('owner'), createUser);
-`}</pre>
+  `}</Code>
 
             <p>
               Most of the structure is self-explanatory. The YAML structure{' '}
@@ -294,7 +297,7 @@ router.put('/', restrictToRoles('owner'), createUser);
               it can be set up on a route and serve that documentation:
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 const swaggerUi = require('swagger-ui-express');
 
 /**
@@ -303,7 +306,7 @@ const swaggerUi = require('swagger-ui-express');
  */
 
 router.use('/docs', swaggerUi.serve, swaggerUi.setup(spec));
-`}</pre>
+  `}</Code>
 
             <p>
               And as simple as that,{' '}
@@ -324,7 +327,7 @@ router.use('/docs', swaggerUi.serve, swaggerUi.setup(spec));
               to serve the raw JSON spec:
             </p>
 
-            <pre>{`
+            <Code language="js" style={vs2015}>{`
 /**
  * Given \`spec\` and the \`router\`
  */
@@ -345,7 +348,7 @@ router.use('/docs', swaggerUi.serve, (req, res, next) => {
     swaggerUiHandler(req, res, next);
   }
 });
-`}</pre>
+  `}</Code>
 
             <p>
               That <code>url</code> query parameter makes the page show the
