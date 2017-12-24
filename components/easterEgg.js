@@ -4,8 +4,13 @@ import Sound from 'react-sound';
 class EasterEgg extends React.Component {
   state = {
     busted: false,
-    gotExtraLife: false
+    gotExtraLife: false,
+    shown: false
   };
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ shown: true }), 0);
+  }
 
   bust() {
     if (!this.state.busted) {
@@ -20,11 +25,13 @@ class EasterEgg extends React.Component {
   }
 
   render() {
-    const { busted, gotExtraLife } = this.state;
+    const { busted, shown, gotExtraLife } = this.state;
 
     return (
       <div
-        className={['container', busted && 'busted'].join(' ')}
+        className={['container', busted && 'busted', shown && 'shown'].join(
+          ' '
+        )}
         onClick={() => this.bust()}
       >
         <img className="screen" src="/static/images/easter-egg/screen.gif" />
@@ -64,6 +71,12 @@ class EasterEgg extends React.Component {
             bottom: 0;
             right: 20px;
             cursor: pointer;
+            transform: translateY(40px);
+            transition: transform 0.5s cubic-bezier(0.225, 1.65, 0.61, 1.65);
+          }
+
+          .container.shown {
+            transform: translateY(0);
           }
 
           img {
