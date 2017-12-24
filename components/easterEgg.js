@@ -5,6 +5,7 @@ class EasterEgg extends React.Component {
   state = {
     busted: false,
     gotExtraLife: false,
+    done: false,
     shown: false
   };
 
@@ -24,8 +25,12 @@ class EasterEgg extends React.Component {
     }
   }
 
+  done() {
+    this.setState({ done: true });
+  }
+
   render() {
-    const { busted, shown, gotExtraLife } = this.state;
+    const { busted, shown, gotExtraLife, done } = this.state;
 
     return (
       <div
@@ -49,7 +54,7 @@ class EasterEgg extends React.Component {
         <Sound
           url="/static/sounds/boom.mp3"
           playStatus={
-            busted && !gotExtraLife
+            busted && !gotExtraLife && !done
               ? Sound.status.PLAYING
               : Sound.status.STOPPED
           }
@@ -59,8 +64,9 @@ class EasterEgg extends React.Component {
         <Sound
           url="/static/sounds/life.mp3"
           playStatus={
-            gotExtraLife ? Sound.status.PLAYING : Sound.status.STOPPED
+            gotExtraLife && !done ? Sound.status.PLAYING : Sound.status.STOPPED
           }
+          onFinishedPlaying={() => this.done()}
         />
 
         <style jsx>{`
